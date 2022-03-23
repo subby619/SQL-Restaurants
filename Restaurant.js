@@ -1,6 +1,6 @@
 const Menu = require('./Menu')
 
-const db = require('better-sqlite3')('./db.sqlite')
+const db = require('better-sqlite3')('./resDb.sqlite')
 
 class Restaurant {
     static all = []

@@ -1,17 +1,17 @@
 const db = require('better-sqlite3')(':memory:')
 
-describe('better-sqlite3 is used like this', () => {
+describe('using better-sqlite3', () => {
     beforeAll(() => {
         db.prepare('CREATE TABLE restaurants (id INTEGER PRIMARY KEY, name TEXT);').run()
         const restaurantsInsert = db.prepare('INSERT INTO restaurants (name) VALUES (?);')
-        restaurantsInsert.run('Bayroot')
+        restaurantsInsert.run('Pizza Hut')
         restaurantsInsert.run('Nandos')
     })
-    test('can read out of a database', () => {
+    test('reading out of my database', () => {
         const restaurants = db.prepare('SELECT id, name FROM restaurants;').all()
         expect(Array.isArray(restaurants)).toBeTruthy()
         const [row1, row2] = restaurants
-        expect(row1.name).toBe('Bayroot')
+        expect(row1.name).toBe('Pizza Hut')
         expect(row2.id).toBe(2)
     })
     test('we can update rows', () => {
@@ -19,9 +19,9 @@ describe('better-sqlite3 is used like this', () => {
         expect(getRestaurant.get(2).name).toBe('Nandos')
         
         const update = db.prepare('UPDATE restaurants SET name = ? WHERE id = ?;')
-        update.run('Cheeky Nandos', 2)
+        update.run('Pizza Express', 1)
 
-        expect(getRestaurant.get(2).name).toBe('Cheeky Nandos')        
+        expect(getRestaurant.get(1).name).toBe('Pizza Express')        
     })
     test('we can also delete!', () => {
         db.prepare('DELETE FROM restaurants WHERE id = 2;').run()

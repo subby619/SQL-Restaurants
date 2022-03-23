@@ -4,4 +4,7 @@ const Menu = require('./Menu')
 Restaurant.init()
 Menu.init()
 
-console.log(Restaurant.all)
+const absurdbird = Restaurant.all[1]
+absurdbird.addMenu("Drinks")
+
+console.log(absurdbird)

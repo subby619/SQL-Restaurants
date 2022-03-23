@@ -1,4 +1,4 @@
-const db = require('better-sqlite3')('./db.sqlite')
+const db = require('better-sqlite3')('./resDb.sqlite')
 
 class Menu {
     static init = function () {
